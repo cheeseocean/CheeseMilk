@@ -101,7 +101,7 @@ subprojects {
                         developer {
                             id = "xxxcrel"
                             name = "xxxcrel"
-                            email = "crelxc@gmail.com"
+                            email = "xxxcrel@gmail.com"
                         }
                     }
                 }
