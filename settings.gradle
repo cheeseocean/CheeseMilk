@@ -1,8 +1,13 @@
 pluginManagement {
     plugins {
-        id 'org.springframework.boot' version '3.2.4'
+        id 'org.springframework.boot' version '3.5.3'
         id 'com.google.protobuf' version '0.8.15'
         id "org.flywaydb.flyway" version '11.8.1'
+    }
+    repositories {
+        maven {
+            url "https://maven.aliyun.com/repository/gradle-plugin"
+        }
     }
 }
 
