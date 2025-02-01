@@ -12,6 +12,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.UserDetailsRepositoryReactiveAuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
@@ -50,15 +51,14 @@ public class SecurityConfig implements BeanClassLoaderAware {
                     authorize.pathMatchers(HttpMethod.POST, "/login").permitAll()
                             .anyExchange().authenticated();
                 })
-                .httpBasic().and()
+                .httpBasic(Customizer.withDefaults())
 //                .oauth2Login().and()
                 .cors(corsSpec -> {
                     corsSpec.configurationSource(corsConfigurationSource());
                 })
-                .csrf().disable();
+                .csrf(Customizer.withDefaults());
 //                .authenticationSuccessHandler(new RedirectServerAuthenticationSuccessHandler("/core/user"))
 //                .loginPage("/login")
-        http.addFilterAt(loginFilter(), SecurityWebFiltersOrder.FORM_LOGIN);
         // @formatter:on
         return http.build();
     }
@@ -70,36 +70,6 @@ public class SecurityConfig implements BeanClassLoaderAware {
 
     public static void main(String[] args) {
         System.out.println(new BCryptPasswordEncoder().encode("helloxc"));
-    }
-
-    @Autowired
-    ReactiveUserDetailsServiceImpl userDetailsService;
-
-    @Bean
-    ReactiveAuthenticationManager authenticationManager() {
-        UserDetailsReactiveAuthenticationManager authenticationManager =
-                new UserDetailsReactiveAuthenticationManager();
-        authenticationManager.setUserDetailsPasswordService(userDetailsService);
-        authenticationManager.setUserDetailsService(userDetailsService);
-        authenticationManager.setPasswordEncoder(passwordEncoder());
-        return authenticationManager;
-    }
-
-    @Bean
-    AuthenticationWebFilter loginFilter() {
-        AuthenticationWebFilter loginFilter = new AuthenticationWebFilter(authenticationManager());
-        loginFilter.setServerAuthenticationConverter(new ServerJsonLoginAuthenticationConverter());
-        loginFilter.setSecurityContextRepository(new WebSessionServerSecurityContextRepository());
-        loginFilter.setRequiresAuthenticationMatcher(ServerWebExchangeMatchers.pathMatchers(HttpMethod.POST, "/login"));
-//        loginFilter.setAuthenticationSuccessHandler(new RedirectServerAuthenticationSuccessHandler("/core/user"));
-        loginFilter.setAuthenticationSuccessHandler(new ServerAuthenticationSuccessHandler() {
-            @Override
-            public Mono<Void> onAuthenticationSuccess(WebFilterExchange webFilterExchange, Authentication authentication) {
-                return Mono.empty();
-            }
-        });
-        loginFilter.setAuthenticationFailureHandler(new RedirectServerAuthenticationFailureHandler("/login?error"));
-        return loginFilter;
     }
 
     @Bean

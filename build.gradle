@@ -8,9 +8,8 @@ plugins{
 }
 //spring boot cloud and alibaba cloud version wiki:https://github.com/alibaba/spring-cloud-alibaba/wiki
 ext{
-    set("springCloudVersion", "2021.0.1")
-    set("alibabaCloudVersion", "2021.0.1.0")
-    set("springDataR2DBCVersion", "Borca-RELEASE")
+    set("springCloudVersion", "2023.0.1")
+    set("alibabaCloudVersion", "2023.0.3.3")
     set("dubboVersion", "3.0.5")
 }
 allprojects{
@@ -46,7 +45,6 @@ subprojects {
         implementation platform(SpringBootPlugin.BOM_COORDINATES)
         implementation platform("com.alibaba.cloud:spring-cloud-alibaba-dependencies:${alibabaCloudVersion}")
         implementation platform("org.apache.dubbo:dubbo-dependencies-bom:${dubboVersion}")
-        implementation platform("io.r2dbc:r2dbc-bom:${springDataR2DBCVersion}")
         //Spring Session
         implementation 'org.springframework.session:spring-session-data-redis'
         implementation 'io.lettuce:lettuce-core'

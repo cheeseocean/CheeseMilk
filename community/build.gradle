@@ -1,6 +1,5 @@
 dependencies {
     implementation project(':common')
-    implementation 'com.cheeseocean:core-api:1.0.1'
     implementation 'mysql:mysql-connector-java:8.0.28'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

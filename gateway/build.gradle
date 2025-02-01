@@ -3,10 +3,7 @@ dependencies {
     // Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    // Spring Data JPA and R2DBC
-    implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
     // Spring Cloud Gateway
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
-    implementation 'dev.miku:r2dbc-mysql:0.8.2.RELEASE'
 }

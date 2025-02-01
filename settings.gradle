@@ -5,6 +5,7 @@ pluginManagement {
         id "org.flywaydb.flyway" version '11.8.1'
     }
     repositories {
+        gradlePluginPortal()
         maven {
             url "https://maven.aliyun.com/repository/gradle-plugin"
         }
