@@ -8,8 +8,6 @@ import org.springframework.core.io.buffer.DefaultDataBufferFactory;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.cheeseocean.gateway.security.LoginEntity;
-
 
 public class JsonCodecTest {
 

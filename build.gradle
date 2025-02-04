@@ -52,6 +52,8 @@ subprojects {
         implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
         //Validation
         implementation 'org.springframework.boot:spring-boot-starter-validation'
+        //Spring Data
+        implementation 'org.springframework.data:spring-data-jpa'
     }
 
     tasks.register('apiJar', Jar) {

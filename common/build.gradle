@@ -2,7 +2,7 @@ dependencies {
     implementation 'jakarta.persistence:jakarta.persistence-api'
     implementation 'org.springframework.data:spring-data-commons'
     implementation 'org.springframework.security:spring-security-acl'
-    implementation 'commons-net:commons-net:3.6'
+    implementation 'commons-net:commons-net:3.9.0'
     implementation 'io.jsonwebtoken:jjwt-api:0.11.1'
     implementation 'io.jsonwebtoken:jjwt-impl:0.11.1'
     implementation 'io.jsonwebtoken:jjwt-jackson:0.11.1'
