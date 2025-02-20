@@ -1,17 +1,15 @@
 package com.cheeseocean.core.entity;
 
-import java.time.LocalDateTime;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
+import com.cheeseocean.common.entity.BasicEntity;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import org.hibernate.Hibernate;
 
-import com.cheeseocean.common.entity.BasicEntity;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tbl_course")
@@ -35,7 +33,8 @@ public class Course extends BasicEntity {
     @ManyToOne
     private UserInfo userInfo;
 
-    public Course(){}
+    public Course() {
+    }
 
     private Course(Builder builder) {
         setId(builder.id);
@@ -135,20 +134,21 @@ public class Course extends BasicEntity {
 
 
     public static final class Builder {
-        private Long id;
-        private String remark;
+        private Long          id;
+        private String        remark;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
-        private String semester;
-        private String weekNumber;
-        private String className;
-        private String classAddress;
-        private String teacherName;
-        private int start;
-        private int length;
-        private UserInfo userInfo;
+        private String        semester;
+        private String        weekNumber;
+        private String        className;
+        private String        classAddress;
+        private String        teacherName;
+        private int           start;
+        private int           length;
+        private UserInfo      userInfo;
 
-        private Builder() {}
+        private Builder() {
+        }
 
         public Builder id(Long val) {
             id = val;
