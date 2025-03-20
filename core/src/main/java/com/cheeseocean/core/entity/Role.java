@@ -2,10 +2,9 @@ package com.cheeseocean.core.entity;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
 import com.cheeseocean.common.entity.BasicEntity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 
 @Entity

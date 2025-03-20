@@ -1,14 +1,13 @@
 package com.cheeseocean.community.entity;
 
-import java.time.LocalDateTime;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
-
 import com.cheeseocean.common.entity.BasicEntity;
 import com.cheeseocean.common.enums.ResourceType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Table;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tbl_star")
@@ -63,15 +62,16 @@ public class Star extends BasicEntity {
 
 
     public static final class Builder {
-        private Long id;
-        private String remark;
+        private Long          id;
+        private String        remark;
         private LocalDateTime createdAt;
         private LocalDateTime updatedAt;
-        private Long uid;
-        private Long resourceId;
-        private ResourceType resourceType;
+        private Long          uid;
+        private Long          resourceId;
+        private ResourceType  resourceType;
 
-        private Builder() {}
+        private Builder() {
+        }
 
         public Builder id(Long val) {
             id = val;
