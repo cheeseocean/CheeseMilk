@@ -8,7 +8,7 @@ plugins{
 }
 //spring boot cloud and alibaba cloud version wiki:https://github.com/alibaba/spring-cloud-alibaba/wiki
 ext{
-    set("springCloudVersion", "2023.0.1")
+    set("springCloudVersion", "2025.0.0")
     set("alibabaCloudVersion", "2023.0.3.3")
     set("dubboVersion", "3.3.5")
 }
@@ -54,6 +54,8 @@ subprojects {
         implementation 'org.springframework.boot:spring-boot-starter-validation'
         //Spring Data
         implementation 'org.springframework.data:spring-data-jpa'
+        //logback
+        implementation 'ch.qos.logback:logback-classic'
     }
 
     tasks.register('apiJar', Jar) {
