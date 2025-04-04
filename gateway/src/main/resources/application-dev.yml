@@ -1,13 +1,30 @@
-
 store:
   host:
-#    mysql-r2dbc: sfo.cheeseocean.com
-    mysql-r2dbc: localhost
+    #    nacos: 127.0.0.1
+    #    redis: 127.0.0.1
+    #    mysql: 127.0.0.1
+    nacos: 192.168.6.139
+    redis: 192.168.6.139
+    mysql: 192.168.6.139
 spring:
-  r2dbc:
-    password: mysql.cheeseocean.com
+  datasource:
     username: cheeseocean
-    name: cheeseocean
-    url: r2dbc:pool:mysql://${store.host.mysql-r2dbc}:3306/cheeseocean
-  config:
-    import: classpath:application-common-dev.yml
+    password: mysql.cheeseocean.com
+    url: jdbc:mysql://${store.host.mysql}:3306/cheeseocean
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    database: mysql
+    generate-ddl: true
+    show-sql: true
+  cloud:
+    nacos:
+      server-addr: ${store.host.nacos}:8848
+  data:
+    redis:
+      host: ${store.host.redis}
+      password: redis.cheeseocean.com

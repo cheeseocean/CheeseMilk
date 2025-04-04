@@ -1,11 +1,13 @@
 spring:
   cloud:
     gateway:
-      enabled: true
-      discovery:
-        locator:
+      server:
+        webflux:
           enabled: true
-          lower-case-service-id: true
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
   security:
     oauth2:
       client:
@@ -20,10 +22,27 @@ spring:
     name: gateway
   profiles:
     active: dev
-  redis:
-    client-type: lettuce
+  data:
+    redis:
+      client-type: lettuce
+      client-name: luttece
+  jpa:
+    open-in-view: false
+  output:
+    ansi:
+          enabled: detect
+  web:
+    locale: zh_CN
+  flyway:
+    baseline-on-migrate: true
 server:
   port: 7404
+  servlet:
+    session:
+          cookie:
+            name: SESSION
+  error:
+    include-exception: on
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG

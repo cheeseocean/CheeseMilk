@@ -1,6 +1,4 @@
 spring:
-  config:
-    import: classpath:application-common-dev.yml
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
   flyway:
