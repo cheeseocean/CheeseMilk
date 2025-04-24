@@ -4,8 +4,6 @@ server:
 spring:
   application:
     name: core
-  config:
-    import: classpath:application-common.yml
   datasource:
     type: org.apache.commons.dbcp2.BasicDataSource
   profiles:

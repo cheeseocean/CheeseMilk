@@ -1,8 +1,6 @@
 server:
   port: 7402
 spring:
-  config:
-    import: classpath:application-common.yml
   application:
     name: community
   mongodb:
