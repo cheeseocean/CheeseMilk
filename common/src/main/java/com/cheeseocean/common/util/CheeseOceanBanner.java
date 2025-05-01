@@ -2,6 +2,7 @@ package com.cheeseocean.common.util;
 
 import java.io.PrintStream;
 
+import com.cheeseocean.common.CheeseOceanVersion;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.boot.ansi.AnsiColor;
@@ -38,16 +39,18 @@ public class CheeseOceanBanner implements Banner {
         for (String line : BANNER) {
             printStream.println(AnsiOutput.toString(AnsiColor.BRIGHT_YELLOW, line));
         }
-        String version = SpringBootVersion.getVersion();
-        version = (version != null) ? " (v" + version + ")" : "";
+        String springVersion = SpringBootVersion.getVersion();
+        String appVersion = CheeseOceanVersion.getVersion();
+        springVersion = " (v" + springVersion + ")";
+        appVersion = " (v" + appVersion + ")";
         StringBuilder padding = new StringBuilder();
-        while (padding.length() < STRAP_LINE_SIZE - (version.length() + SPRING_BOOT.length())) {
+        while (padding.length() < STRAP_LINE_SIZE - (springVersion.length() + SPRING_BOOT.length())) {
             padding.append(" ");
         }
         printStream.println(AnsiOutput.toString(AnsiColor.YELLOW, CHEESE_OCEAN, AnsiColor.DEFAULT, padding.toString(),
-                AnsiStyle.FAINT, version));
+                AnsiStyle.FAINT, appVersion));
         printStream.println(AnsiOutput.toString(AnsiColor.GREEN, SPRING_BOOT, AnsiColor.DEFAULT, padding.toString(),
-                AnsiStyle.FAINT, version));
+                AnsiStyle.FAINT, springVersion));
         printStream.println();
     }
 }
