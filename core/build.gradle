@@ -1,14 +1,16 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'org.flywaydb.flyway'
+}
+
 dependencies {
     implementation project(':common')
-    implementation 'mysql:mysql-connector-java:8.0.16'
-    implementation 'org.apache.commons:commons-dbcp2:2.7.0'
-    implementation 'com.sun.mail:javax.mail:1.6.2'
+    // 使用新的MySQL连接器
+    implementation "com.mysql:mysql-connector-j:${mysqlConnectorVersion}"
+    implementation 'org.apache.commons:commons-dbcp2'
 
-    implementation 'io.jsonwebtoken:jjwt-api:0.11.1'
-    implementation 'io.jsonwebtoken:jjwt-impl:0.11.1'
-    implementation 'io.jsonwebtoken:jjwt-jackson:0.11.1'
+    // JWT依赖已在common模块中定义，这里不需要重复
 
-    implementation 'commons-net:commons-net:3.6'
     //Spring Web MVC
     implementation 'org.springframework.boot:spring-boot-starter-web'
     //Spring Data
@@ -19,8 +21,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     //Spring Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
-//    implementation 'org.springframework.security:spring-security-acl:5.5.0'
     implementation 'org.flywaydb:flyway-core'
     //Apache Dubbo
     implementation "org.apache.dubbo:dubbo-spring-boot-starter:${dubboVersion}"
+}
+
+bootJar {
+    archiveFileName = "${project.name}.jar"
 }

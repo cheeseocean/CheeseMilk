@@ -1,16 +1,15 @@
-import org.springframework.boot.gradle.plugin.SpringBootPlugin
-
 plugins{
     id 'java'
-    id 'org.springframework.boot'
     id 'maven-publish'
-    id "org.flywaydb.flyway"
 }
 //spring boot cloud and alibaba cloud version wiki:https://github.com/alibaba/spring-cloud-alibaba/wiki
 ext{
     set("springCloudVersion", "2025.0.0")
     set("alibabaCloudVersion", "2023.0.1.2")
     set("dubboVersion", "3.3.5")
+    set("commonsNetVersion", "3.9.0")
+    set("mysqlConnectorVersion", "8.0.33")
+    set("jjwtVersion", "0.11.5")
 }
 allprojects{
     group = 'com.cheeseocean'
@@ -32,9 +31,12 @@ allprojects{
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'org.springframework.boot'
     apply plugin: 'maven-publish'
-    apply plugin: 'org.flywaydb.flyway'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 
     dependencies {
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
@@ -42,7 +44,7 @@ subprojects {
         testImplementation 'com.h2database:h2'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
         implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
-        implementation platform(SpringBootPlugin.BOM_COORDINATES)
+        implementation platform("org.springframework.boot:spring-boot-dependencies:3.5.3")
         implementation platform("com.alibaba.cloud:spring-cloud-alibaba-dependencies:${alibabaCloudVersion}")
 //        implementation platform("org.apache.dubbo:dubbo-dependencies-bom:${dubboVersion}")
         //Spring Session
@@ -113,9 +115,5 @@ subprojects {
 
     test {
         useJUnitPlatform()
-    }
-
-    bootJar {
-        archiveFileName = "${project.name}.jar"
     }
 }
